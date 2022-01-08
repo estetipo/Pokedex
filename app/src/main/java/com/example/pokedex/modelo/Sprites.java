@@ -1,4 +1,4 @@
-package com.example.pokedex;
+package com.example.pokedex.modelo;
 
 public class Sprites {
     public String back_default;
