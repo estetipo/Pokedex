@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,7 +25,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
 implements Callback<Pokemon> {
-    ImageView imgPkmn;
+    ImageView imgPkmn,imgPkmnDetras,imgPkmnShiny;
     TextView tvNom,tvNum,tvPeso,tvAltura;
     ProgressBar barra;
     Button siguiente;
@@ -34,6 +35,7 @@ implements Callback<Pokemon> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         carga();
         llamaPkmn();
@@ -53,7 +55,9 @@ implements Callback<Pokemon> {
         }.start();
     }
     public void carga(){
-        imgPkmn = findViewById(R.id.ivPkmn);
+        imgPkmn = findViewById(R.id.ivPkmnFrente);
+        imgPkmnDetras = findViewById(R.id.ivPkmnDetras);
+        imgPkmnShiny = findViewById(R.id.ivPkmnShiny);
         tvNom = findViewById(R.id.tvNombre);
         tvNum = findViewById(R.id.tvNumero);
         tvPeso = findViewById(R.id.tvPeso);
@@ -89,8 +93,9 @@ implements Callback<Pokemon> {
             tvNum.setText(String.valueOf(pk.getId()));
             tvPeso.setText(convierte(pk.getWeight()) + " kg");
             tvAltura.setText(convierte(pk.getHeight()) + " m");
-            String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+idPkmn+".png";
-            Picasso.get().load(url).into(imgPkmn);
+            Picasso.get().load(pk.getSprites().getFront_default()).into(imgPkmn);
+            Picasso.get().load(pk.getSprites().getBack_default()).into(imgPkmnDetras);
+            Picasso.get().load(pk.getSprites().getFront_shiny()).into(imgPkmnShiny);
         }else{
             Toast.makeText(this,"Ocurrió un error en la consulta",Toast.LENGTH_LONG).show();
         }

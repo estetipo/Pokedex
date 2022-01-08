@@ -5,6 +5,7 @@ public class Pokemon {
     private String name;
     private String height;
     private String weight;
+    private Sprites sprites;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class Pokemon {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public Sprites getSprites() {
+        return sprites;
+    }
+
+    public void setSprites(Sprites sprites) {
+        this.sprites = sprites;
     }
 }

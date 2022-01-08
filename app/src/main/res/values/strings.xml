@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Pokedex</string>
+    <string name="app_name">Pokédex</string>
+    <string name="poknac">Pokédex Nacional</string>
     <string name="nom">Nombre:</string>
     <string name="num">Número:</string>
     <string name="altu">Altura:</string>
