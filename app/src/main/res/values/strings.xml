@@ -5,5 +5,5 @@
     <string name="num">Número:</string>
     <string name="altu">Altura:</string>
     <string name="peso">Peso:</string>
-    <string name="sig">Siguiente</string>
+    <string name="sig">Mostrar Pokemón</string>
 </resources>
